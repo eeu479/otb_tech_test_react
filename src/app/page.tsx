@@ -1,5 +1,6 @@
 "use client";
 import BookNowButton from "@/components/BookNowButton/BookNowButton";
+import StarRating from "@/components/StarRating/StarRating";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
           price={{ amount: 1150.5, currency: "GBP" }}
           onClick={() => {}}
         />
+        <StarRating star_count={4} />
       </main>
     </div>
   );
