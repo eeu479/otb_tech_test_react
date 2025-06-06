@@ -1,6 +1,8 @@
 "use client";
-import HolidayCard from "@/components/HolidayCard/HolidayCard";
+import SortControl from "@/components/SortControl/SortControl";
 import { Holiday } from "@/lib/models/holidayModels";
+import { SortMethod } from "@/lib/models/sortMethod";
+import { useState } from "react";
 import styles from "./page.module.css";
 
 const stubHoliday: Holiday = {
@@ -33,11 +35,12 @@ const stubHoliday: Holiday = {
 };
 
 export default function Home() {
+  const [sortBy, setSortBy] = useState(SortMethod.ALPHABETICAL);
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         {/* I've placed the component here while i build, in the real world i'd like to have storybook or a component library to view component in its various states. */}
-        <HolidayCard holiday={stubHoliday} />
+        <SortControl sortBy={sortBy} onSortByChange={setSortBy} />
       </main>
     </div>
   );

@@ -1,0 +1,32 @@
+.sort_button {
+    border: none;
+    border-bottom: 1px solid var(--dark-blue);
+    width: 100%;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    background-color: #fff;
+    color: var(--dark-blue);
+}
+
+.sort_button.selected {
+    color: white;
+    background-color: var(--dark-blue);
+}
+
+.sort_button.selected span {
+    color: white;
+}
+
+.sort_button_image {
+    filter: brightness(0) saturate(0) invert(0.5);
+}
+
+.sort_button_image.selected {
+    filter: brightness(0) invert(1);
+}
