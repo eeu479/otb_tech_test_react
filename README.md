@@ -5,6 +5,9 @@ Node Version: v18.18.0 - Required
 
 This is my attempt at the on the beach tech test.
 
+## Run
+To run the project in dev mode, run `npm run dev`
+
 ## Testing 
 I have added tests using @testing-library and jest 
 
