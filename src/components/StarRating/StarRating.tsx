@@ -7,7 +7,10 @@ interface StarRatingProps {
 
 const StarRating: FC<StarRatingProps> = ({ star_count }) => {
   return (
-    <div className={styles.star_rating_container}>
+    <div
+      className={styles.star_rating_container}
+      aria-label={`Rating: ${star_count} star rating`}
+    >
       {Array.from({ length: star_count }).map((_, i) => (
         <Image
           src="/assets/ic_star.svg"
@@ -15,6 +18,7 @@ const StarRating: FC<StarRatingProps> = ({ star_count }) => {
           height={"16"}
           width={16}
           alt={`${i + 1} star`}
+          aria-hidden="true"
         />
       ))}
     </div>

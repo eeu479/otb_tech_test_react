@@ -65,7 +65,7 @@ const HolidayCard: FC<HolidayCardProps> = ({ holiday, onBookNow }) => {
     const departureDate = dayjs(flightDetails.departureDate);
     return (
       <div>
-        <span className={styles.featured_text}>
+        <span className={styles.bold_textgs}>
           {departureDate.format("Do MMMM YYYY")}
         </span>{" "}
         for <strong>{lengthOfStay}</strong> days
@@ -95,6 +95,8 @@ const HolidayCard: FC<HolidayCardProps> = ({ holiday, onBookNow }) => {
             <button
               className={styles.read_more_button}
               onClick={handleToggleReadMore}
+              aria-controls="overview"
+              aria-expanded={isOverviewVisible}
             >
               <span>
                 <span className={styles.bold_text}>
@@ -140,6 +142,7 @@ const HolidayCard: FC<HolidayCardProps> = ({ holiday, onBookNow }) => {
       </div>
 
       <div
+        id="overview"
         ref={overviewRef}
         className={`${styles.overview_section} ${
           isOverviewVisible ? styles.overview_visible : styles.overview_hidden
