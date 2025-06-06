@@ -24,7 +24,7 @@ const useHolidayData = (sortMethod?: SortMethod) => {
       const data: Holiday[] = await response.json();
       setRawHolidaysData(data);
     } catch (error) {
-      setErrorMessage("Failed to fetch data");
+      setErrorMessage(`Failed to fetch data: ${error}`);
     }
     setLoading(false);
   }, []);
