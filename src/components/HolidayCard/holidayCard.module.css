@@ -1,0 +1,126 @@
+.holiday_card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    max-width: 50rem;
+    width: 100%;
+}
+
+.holiday_card_content {
+    display: flex;
+}
+
+.holiday_image_container {
+    width: 60%;
+    position: relative;
+}
+
+.holiday_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.holiday_details {
+    flex: 1;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.holiday_name {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--dark-blue);
+}
+
+.holiday_location {
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.star_rating {
+    color: #FFC107;
+    margin-bottom: 12px;
+}
+
+.travel_info {
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.booking_section {
+    margin-top: auto;
+}
+
+.overview_section {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    background-color: #fff;
+}
+
+.overview_visible {
+    max-height: 500px;
+    padding: 15px 20px;
+}
+
+.overview_hidden {
+    max-height: 0;
+    padding: 0 20px;
+}
+
+.overview_title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--dark-blue);
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.overview_text {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.6;
+}
+
+.read_more_container {
+    background-color: #ffffff;
+    padding: 12px 20px;
+    position: absolute;
+    bottom: 0;
+}
+
+.read_more_button {
+    background-color: white;
+    color: var(--dark-blue);
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    gap: 8px;
+}
+
+.read_more_button:hover {
+    text-decoration: underline;
+}
+
+.chevron_down {
+    color: var(--dark-blue);
+}
+
+.chevron_up {
+    transform: rotate(180deg);
+}
+
+.bold_text {
+    font-weight: bold;
+}
