@@ -8,6 +8,7 @@ const formatPrice = (
     currency: currency,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
+    useGrouping: true,
   }).format(num);
 };
 
