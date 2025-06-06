@@ -1,6 +1,9 @@
 .page {
+  display: flex;
   min-height: 100svh;
   font-family: var(--font-geist-sans);
+  justify-content: center;
+  align-items: center;
 }
 
 .main {
