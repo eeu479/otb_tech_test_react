@@ -1,46 +1,62 @@
 "use client";
+
+import HolidayCard from "@/components/HolidayCard/HolidayCard";
 import SortControl from "@/components/SortControl/SortControl";
 import { Holiday } from "@/lib/models/holidayModels";
 import { SortMethod } from "@/lib/models/sortMethod";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./page.module.css";
 
-const stubHoliday: Holiday = {
-  resort: {
-    id: "7dd27e42-2b5c-4237-86ac-97c26f72eb5b",
-    name: "Iberostar Grand Salome",
-    regionName: "Costa Adeje",
-    countryName: "Tenerife",
-    starRating: 5,
-    overview:
-      "The Iberostar Grand Salomehas an exceptional location in the south of Tenrife, overlooking the Atlantic Ocean. It is situated between the Golf del Sur and the Amarillo Golf Courses, and is an ideal hotel for families couples and groups who are looking for a holiday full of sport, sun and sea.",
-    image: {
-      url: "https://static.onthebeach.co.uk/fe-code-test/hotel-image-1.jpg",
-      description:
-        "A tranquil resort swimming pool with clear blue water, surrounded by two-story villas with terracotta roofs under a bright blue sky.",
-    },
-  },
-  flightDetails: {
-    departureAirport: "East Midlands",
-    departureDate: "2030-07-03T00:00:00.000Z",
-  },
-  bookingDetails: {
-    party: { adults: 2, children: 2, infants: 1 },
-    lengthOfStay: 7,
-    price: {
-      amount: 1136.5,
-      currency: "GBP",
-    },
-  },
-};
-
 export default function Home() {
-  const [sortBy, setSortBy] = useState(SortMethod.ALPHABETICAL);
+  const [sortMethod, setSortMethod] = useState<SortMethod>(SortMethod.PRICE);
+
+  const [loading, setLoading] = useState(false);
+  const [holidaysData, setHolidaysData] = useState<Holiday[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const fetchHolidays = useCallback(async () => {
+    setLoading(true);
+    const response = await fetch(
+      "https://static.onthebeach.co.uk/fe-code-test/data.json"
+    );
+    try {
+      if (!response.ok) {
+        setErrorMessage(
+          `HTTP error! Status: ${response.status} - ${response.statusText}`
+        );
+      }
+
+      const data: Holiday[] = await response.json();
+      setHolidaysData(data);
+    } catch (error) {
+      setErrorMessage(`Failed to fetch data: ${error}`);
+    }
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchHolidays();
+  }, [fetchHolidays]);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        {/* I've placed the component here while i build, in the real world i'd like to have storybook or a component library to view component in its various states. */}
-        <SortControl sortBy={sortBy} onSortByChange={setSortBy} />
+        <div className={styles.page_content}>
+          <div className={styles.sort_container}>
+            <SortControl sortBy={sortMethod} onSortByChange={setSortMethod} />
+          </div>
+          <div className={styles.holiday_list_container}>
+            {loading && <p>Loading...</p>}
+            {errorMessage && <p>{errorMessage}</p>}
+            {holidaysData.map((holiday) => (
+              <HolidayCard
+                key={holiday.resort.id}
+                holiday={holiday}
+                onBookNow={() => {}}
+              />
+            ))}
+          </div>
+        </div>
       </main>
     </div>
   );
