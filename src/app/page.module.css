@@ -19,8 +19,19 @@
   max-width: 1400px;
   margin: 2rem auto;
   padding: 0 2rem;
+  
 }
 
+@media (max-width: 900px) {
+  .page_content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 1rem auto;
+    padding: 0 1rem;
+    max-width: 80%;
+  }
+}
 
 .sort_container {
   display: flex;
